@@ -10,9 +10,6 @@ html {
   /* Esto evita que el header sticky tape el título de la sección */
   scroll-padding-top: 80px;
 }
-main{
-  height: 90vh;
-}
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
