@@ -19,16 +19,16 @@ CREATE TABLE Rescues(
     estado CHAR(1) DEFAULT '1'
 )ENGINE=INNODB;
 
-CREATE TABLE Adopts (
-    idAdopt INT AUTO_INCREMENT PRIMARY KEY,
-    idRescate INT NOT NULL ,
+CREATE TABLE Adoptions (
+    idAdopcion INT AUTO_INCREMENT PRIMARY KEY,
+    idRescate INT NOT NULL,
     nombreAdoptante VARCHAR(120) NOT NULL,
+    dniAdoptante CHAR(8) NOT NULL,
     telefonoAdoptante VARCHAR(20) NOT NULL,
     direccionAdoptante VARCHAR(150) NOT NULL,
     fechaAdopcion DATETIME NOT NULL DEFAULT NOW(),
-    observaciones VARCHAR(200),
-    estado CHAR(1) DEFAULT '1',
-    CONSTRAINT fk_rescate_adopt FOREIGN KEY (idRescate) REFERENCES Rescues(idRescate)
+	estado CHAR(1) DEFAULT '1',
+    FOREIGN KEY (idRescate) REFERENCES Rescues(idRescate)
 ) ENGINE=INNODB;
 
 INSERT INTO Rescues (
@@ -36,12 +36,6 @@ INSERT INTO Rescues (
 ) VALUES 
 ('Juan Pérez', '987654321', 'Voluntario','23423234', 'Perro', 'Macho', 'Pitbull','Negro con manchas blancas', 'Parque Central','2025-08-14', 'Herido', 'Abandonado'),
 ('María López', '912345678', 'Ciudadano','44332244', 'Gato', 'Hembra', 'No identificado','Gris atigrado', 'Avenida Principal','2025-09-15', 'Sano', 'Perdido');
-
-INSERT INTO Adopts (
-    idRescate, nombreAdoptante, telefonoAdoptante, direccionAdoptante, observaciones
-) VALUES
-(1, 'Luis Ramírez', '987654321', 'Av. Los Incas 123 - Ica', 'Comprometido con el cuidado del perro'),
-(2, 'Carolina Díaz', '912345678', 'Jr. San Martín 456 - Ica', 'Familia con experiencia en gatos');
 
 SELECT * FROM Rescues;
 

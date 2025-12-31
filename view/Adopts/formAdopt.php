@@ -1,25 +1,23 @@
+<?php
+// Capturamos el ID que viene del catálogo
+$idMascota = isset($_GET['id']) ? $_GET['id'] : '';
+?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RescuesPets | Formulario de Adopción</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoptar | RescuesPets</title>
+    <script src="https://kit.fontawesome.com/814fc0ff07.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../public/css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
 
-    <script
-      src="https://kit.fontawesome.com/814fc0ff07.js"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../../public/css/forms.css" />
-  </head>
-  <body class="bg-light">
     <header class="bg-white shadow-sm sticky-top">
       <nav class="navbar navbar-expand-lg py-3">
         <div class="container">
-          <a class="navbar-brand fw-bold fs-3" href="../../index.html">
+          <a class="navbar-brand fw-bold fs-3" href="./index.html">
             Rescues<span class="text-rescue">Pets</span>
           </a>
           <button
@@ -34,29 +32,29 @@
             <ul class="navbar-nav ms-auto align-items-center">
               <li class="nav-item">
                 <a
-                  class="nav-link nav-underlines mx-2 fw-semibold"
-                  href="../../index.html"
+                  class="nav-text nav-underlines mx-2 fw-semibold"
+                  href="./index.html"
                   >Home</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link nav-underlines mx-2 fw-semibold"
-                  href="../Rescues/formRescues.php"
+                  class="nav-text nav-underlines nav-link mx-2 fw-semibold"
+                  href="./view/Rescues/formRescues.php"
                   >Reportar Caso</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link nav-underlines mx-2 fw-semibold"
-                  href="#"
+                  class="nav-text nav-underlines nav-link mx-2 fw-semibold"
+                  href="./view/Adopts/catalogoAdopt.php"
                   >Adoptar</a
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item ms-lg-3">
                 <a
-                  class="nav-link nav-underlines mx-2 fw-semibold"
-                  href="../Rescues/listRescues.php"
+                  class="nav-text nav-underlines nav-link mx-2 fw-semibold"
+                  href="./view/Rescues/listRescues.php"
                   >RegistrosPets</a
                 >
               </li>
@@ -67,102 +65,125 @@
     </header>
 
     <main class="container py-5">
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="form-container">
-            <div class="text-center mb-5">
-              <h1 class="fw-bold">
-                Formulario de <span class="text-rescue">Adopción</span>
-              </h1>
-              <p class="text-muted">
-                Completa la información del adoptante para formalizar el
-                proceso.
-              </p>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card card-custom p-4 p-md-5">
+                    <div class="text-center mb-4">
+                        <span class="badge bg-danger-subtle text-danger mb-3 px-3 py-2 rounded-pill fw-bold">NUEVA VIDA</span>
+                        <h2 class="fw-bold display-6">Formulario de <span class="text-rescue">Adopción</span></h2>
+                        <p class="text-muted">Completa los datos para procesar la adopción de la mascota <strong>#<?php echo $idMascota; ?></strong></p>
+                    </div>
+
+                    <form id="form-adopcion">
+                        <input type="hidden" name="idRescate" value="<?php echo $idMascota; ?>">
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Nombre Completo</label>
+                            <input type="text" name="nombreAdoptante" class="form-control form-control-lg border-0 bg-light" 
+                                   style="border-radius: 15px;" required placeholder="Tu nombre">
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">DNI</label>
+                                <input type="text" name="dniAdoptante" class="form-control border-0 bg-light" 
+                                       style="border-radius: 15px;" maxlength="8" pattern="\d{8}" required placeholder="8 dígitos">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Teléfono</label>
+                                <input type="tel" name="telefonoAdoptante" class="form-control border-0 bg-light" 
+                                       style="border-radius: 15px;" required placeholder="999 999 999">
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Dirección de Domicilio</label>
+                            <textarea name="direccionAdoptante" class="form-control border-0 bg-light" 
+                                      style="border-radius: 15px;" rows="2" required placeholder="¿Dónde vivirá la mascota?"></textarea>
+                        </div>
+
+                        <div class="text-center d-grid">
+                            <button type="submit" class="btn-rescue border-0">
+                                <i class="fa-solid fa-paw me-2"></i> Confirmar Adopción
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-
-            <form id="form-registro-adopcion" autocomplete="off">
-              <h4 class="section-header">1. Mascota a Adoptar</h4>
-              <div class="row g-3 mb-4">
-                <div class="col-md-12">
-                  <label class="form-label fw-bold"
-                    >ID del Rescate (Referencia)</label
-                  >
-                  <input
-                    type="number"
-                    name="idRescate"
-                    class="form-control"
-                    required
-                    placeholder="Ingrese el código de la mascota"
-                  />
-                  <div class="form-text text-muted small">
-                    Este es el código que vincula la adopción con la mascota
-                    rescatada.
-                  </div>
-                </div>
-              </div>
-
-              <h4 class="section-header">2. Datos del Adoptante</h4>
-              <div class="row g-3 mb-4">
-                <div class="col-md-8">
-                  <label class="form-label fw-bold"
-                    >Nombre Completo del Adoptante</label
-                  >
-                  <input
-                    type="text"
-                    name="nombreAdoptante"
-                    class="form-control"
-                    required
-                    placeholder="Ej. María García"
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label fw-bold">Teléfono de Contacto</label>
-                  <input
-                    type="tel"
-                    name="telefonoAdoptante"
-                    class="form-control"
-                    required
-                    placeholder="Ej. 943 343 4343"
-                  />
-                </div>
-                <div class="col-md-12">
-                  <label class="form-label fw-bold"
-                    >Dirección de Domicilio</label
-                  >
-                  <input
-                    type="text"
-                    name="direccionAdoptante"
-                    class="form-control"
-                    required
-                    placeholder="Calle, Número, Distrito"
-                  />
-                </div>
-              </div>
-
-              <h4 class="section-header">3. Observaciones</h4>
-              <div class="row g-3">
-                <div class="col-md-12">
-                  <label class="form-label fw-bold">Comentarios o Notas</label>
-                  <textarea
-                    name="observaciones"
-                    class="form-control"
-                    rows="3"
-                    placeholder="Detalles adicionales sobre la vivienda, familia, etc."
-                  ></textarea>
-                </div>
-              </div>
-
-              <div class="text-center mt-5">
-                <button type="submit" class="btn-rescue">
-                  <i class="fa-solid fa-heart me-2"></i> Confirmar Adopción
-                </button>
-              </div>
-            </form>
-          </div>
         </div>
-      </div>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+    <footer class="bg-white border-top py-5 mt-5">
+      <div class="container text-center text-md-start">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <h3 class="fw-bold">
+              Rescues<span style="color: #e3091b">Pets</span>
+            </h3>
+            <p class="text-muted">
+              Uniendo corazones, salvando vidas desde 2025.
+            </p>
+          </div>
+          <div class="col-md-4 text-center">
+            <h5 class="fw-bold mb-3">Navegación</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a
+                  href="../../index.html"
+                  class="text-muted text-decoration-none"
+                  >Inicio</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none">Adoptar</a>
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none">Reportar</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 text-md-end">
+            <h5 class="fw-bold mb-3">Contacto</h5>
+            <div
+              class="d-flex justify-content-center justify-content-md-end gap-3 mb-2"
+            >
+              <a href="#" class="text-dark"
+                ><i class="fa-brands fa-facebook fs-4"></i
+              ></a>
+              <a href="#" class="text-dark"
+                ><i class="fa-brands fa-instagram fs-4"></i
+              ></a>
+            </div>
+            <p class="small text-muted">Rescuespets@gmail.com</p>
+          </div>
+        </div>
+        <p class="text-center text-muted small mt-4">
+          &copy; 2025 RescuesPets - Todos los derechos reservados.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+        document.getElementById('form-adopcion').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const fd = new FormData(this);
+            fd.append('operation', 'registrar');
+
+            fetch('../../controllers/AdoptionController.php', {
+                method: 'POST',
+                body: fd
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.status) {
+                    alert(data.message);
+                    window.location.href = "../../index.html";
+                } else {
+                    alert("Error: " + data.message);
+                }
+            })
+            .catch(err => console.error("Error:", err));
+        });
+    </script>
+</body>
 </html>

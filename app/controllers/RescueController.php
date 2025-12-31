@@ -20,7 +20,6 @@ if (isset($_POST['operation'])) {
             break;
 
         case 'registrar':
-            // Sincronizado con la nueva tabla: Incluye DNI y quita estadoActual
             $datos = [
                 'nombreRescatista'    => $_POST['nombreRescatista'],
                 'DNI'                 => $_POST['DNI'],
@@ -35,11 +34,25 @@ if (isset($_POST['operation'])) {
                 'estadoSalud'         => $_POST['estadoSalud'],
                 'condiciones'         => $_POST['condiciones']
             ];
-            echo json_encode($rescue->registrar($datos));
+
+            // Ejecutamos el registro
+            $resultado = $rescue->registrar($datos);
+
+            // Armamos una respuesta que el JS pueda entender
+            if ($resultado) {
+                echo json_encode([
+                    "status" => true,
+                    "message" => "Registro guardado correctamente"
+                ]);
+            } else {
+                echo json_encode([
+                    "status" => false,
+                    "message" => "No se pudo guardar el registro en la base de datos"
+                ]);
+            }
             break;
 
-        case 'actualizar':
-            // Sincronizado para permitir la edición de todos los campos nuevos
+case 'actualizar':
             $datos = [
                 'idRescate'           => $_POST['idRescate'],
                 'nombreRescatista'    => $_POST['nombreRescatista'],
@@ -55,12 +68,21 @@ if (isset($_POST['operation'])) {
                 'estadoSalud'         => $_POST['estadoSalud'],
                 'condiciones'         => $_POST['condiciones']
             ];
-            echo json_encode($rescue->actualizar($datos));
+
+            // IMPORTANTE: Envolver el resultado en un array con status y message
+            $resultado = $rescue->actualizar($datos);
+            echo json_encode([
+                "status" => $resultado,
+                "message" => $resultado ? "Registro actualizado con éxito" : "Error al actualizar en la base de datos"
+            ]);
             break;
 
         case 'eliminar':
-            // Realiza el borrado lógico (estado = '0') definido en el modelo
-            echo json_encode($rescue->eliminar($_POST['idRescate']));
+            $resultado = $rescue->eliminar($_POST['idRescate']);
+            echo json_encode([
+                "status" => $resultado,
+                "message" => $resultado ? "Registro desactivado" : "Error al eliminar"
+            ]);
             break;
     }
 }
