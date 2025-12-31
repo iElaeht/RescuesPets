@@ -1,0 +1,20 @@
+@import url('style.css'); 
+
+main{
+  height: 90vh;
+}
+
+nav .nav_linksbtns{
+  color: white;
+  border-radius: 12px;
+  background-color: rgb(169, 62, 62);
+  padding: 10px;
+  text-decoration: none;
+}
+nav .nav_linksbtns:hover{
+  color: black;
+  border-radius: 15px;
+  background-color: rgb(238, 66, 66);
+  padding: 10px;
+  text-decoration: none;
+}

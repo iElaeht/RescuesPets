@@ -4,17 +4,18 @@ use RescuesPets;
 CREATE TABLE Rescues(
 	idRescate INT AUTO_INCREMENT PRIMARY KEY,
 	nombreRescatista VARCHAR (120) NOT NULL,
+    DNI CHAR(8)NOT NULL,
 	telefonoContacto VARCHAR(20) NOT NULL,
     ocupacion VARCHAR(50) NOT NULL,
     especie VARCHAR(20)NOT NULL,
     genero VARCHAR(10)NOT NULL,
-    raza VARCHAR(50)NOT NULL,
+    raza VARCHAR(50)NOT NULL DEFAULT 'Mestizo',
     colorCaracteristica VARCHAR (100),
     lugarRescate VARCHAR(150)NOT NULL,
-    fechaRescate DATETIME NOT NULL DEFAULT NOW(),
+    fechaEncontrado DATE NOT NULL,
+    fechaRegistrado DATETIME NOT NULL DEFAULT NOW(),
     estadoSalud VARCHAR(50),
     condiciones VARCHAR(100),
-    estadoActual VARCHAR(100),
     estado CHAR(1) DEFAULT '1'
 )ENGINE=INNODB;
 
@@ -31,14 +32,17 @@ CREATE TABLE Adopts (
 ) ENGINE=INNODB;
 
 INSERT INTO Rescues (
-    nombreRescatista, telefonoContacto, ocupacion, especie, genero, raza, colorCaracteristica, lugarRescate, estadoSalud, condiciones, estadoActual
+    nombreRescatista, telefonoContacto, ocupacion, DNI, especie, genero, raza, colorCaracteristica, lugarRescate, FechaEncontrado ,estadoSalud, condiciones
 ) VALUES 
-('Juan Pérez', '987654321', 'Voluntario', 'Perro', 'Macho', 'Pitbull','Negro con manchas blancas', 'Parque Central', 'Herido', 'Abandonado', 'En tratamiento'),
-('María López', '912345678', 'Ciudadano', 'Gato', 'Hembra', 'No identificado','Gris atigrado', 'Avenida Principal', 'Sano', 'Perdido', 'En refugio');
+('Juan Pérez', '987654321', 'Voluntario','23423234', 'Perro', 'Macho', 'Pitbull','Negro con manchas blancas', 'Parque Central','2025-08-14', 'Herido', 'Abandonado'),
+('María López', '912345678', 'Ciudadano','44332244', 'Gato', 'Hembra', 'No identificado','Gris atigrado', 'Avenida Principal','2025-09-15', 'Sano', 'Perdido');
+
 INSERT INTO Adopts (
     idRescate, nombreAdoptante, telefonoAdoptante, direccionAdoptante, observaciones
 ) VALUES
 (1, 'Luis Ramírez', '987654321', 'Av. Los Incas 123 - Ica', 'Comprometido con el cuidado del perro'),
 (2, 'Carolina Díaz', '912345678', 'Jr. San Martín 456 - Ica', 'Familia con experiencia en gatos');
 
-SELECT * FROM Adopts;
+SELECT * FROM Rescues;
+
+update Rescues SET raza = 'Mestizo' where idRescate = 2;

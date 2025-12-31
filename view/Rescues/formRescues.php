@@ -3,22 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RescuesPets | Reportar Rescate</title>
+    <title>RescuesPets | Nuevo Rescate</title>
     <script
       src="https://kit.fontawesome.com/814fc0ff07.js"
       crossorigin="anonymous"
     ></script>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../../public/css/styleReport.css" />
+    <link rel="stylesheet" href="../../public/css/forms.css" />
   </head>
-  <body class="bg-light">
+  <body>
     <header class="bg-white shadow-sm sticky-top">
       <nav class="navbar navbar-expand-lg py-3">
         <div class="container">
-          <a class="navbar-brand fw-bold fs-3" href="../../index.html">
+          <a class="navbar-brand fw-bold fs-3" href="./index.html">
             Rescues<span class="text-rescue">Pets</span>
           </a>
           <button
@@ -29,30 +29,35 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="nav_bar collapse navbar-collapse" id="navbarNav">
+          <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-center">
               <li class="nav-item">
                 <a
-                  class="nav-link mx-2 fw-semibold nav_home"
+                  class="nav-text nav-underlines mx-2 fw-semibold"
                   href="../../index.html"
                   >Home</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link mx-2 fw-semibold nav_report"
-                  href="./formRescues.php"
+                  class="nav-text nav-underlines nav-link mx-2 fw-semibold"
+                  href="../Rescues/formRescues.php"
                   >Reportar Caso</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link mx-2 fw-semibold nav_adopt" href="../Adopts/formAdopt.php"
+                <a
+                  class="nav-text nav-underlines nav-link mx-2 fw-semibold"
+                  href="#"
                   >Adoptar</a
                 >
               </li>
-              <li class="nav-item ms-lg-3"><a class="nav-link mx-2 fw-semibold" href="#">RegistrosPets</a></li>
               <li class="nav-item ms-lg-3">
-                <a class="nav-link mx-2 fw-semibold" href="#">Iniciar Sesión</a>
+                <a
+                  class="nav-text nav-underlines nav-link mx-2 fw-semibold"
+                  href="./listRescues.php"
+                  >RegistrosPets</a
+                >
               </li>
             </ul>
           </div>
@@ -61,162 +66,144 @@
     </header>
 
     <main class="container py-5">
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="form-container p-4 p-md-5">
-            <div class="text-center mb-5">
-              <h1 class="fw-bold">
-                Formulario de <span style="color: #e3091b">Rescate</span>
-              </h1>
-              <p class="text-muted">
-                Por favor, completa los datos para registrar a la mascota
-                encontrada.
-              </p>
+      <div class="form-container mx-auto" style="max-width: 900px">
+        <h2 class="fw-bold mb-4 text-center">
+          Reportar <span class="text-rescue">Mascota</span>
+        </h2>
+
+        <form id="formRescate" autocomplete="off">
+          <input type="hidden" name="operation" value="registrar" />
+
+          <h5 class="section-header">1. Información del Rescatista</h5>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Nombre del Rescatista</label>
+              <input
+                type="text"
+                name="nombreRescatista"
+                placeholder="Ej. Juan Perez"
+                class="form-control"
+                required
+              />
             </div>
-
-            <form action="procesar_rescate.php" method="POST">
-              <!-- SECCIÓN 1: DATOS DEL RESCATISTA -->
-              <h4 class="section-title">1. Datos del Rescatista</h4>
-              <div class="row g-3 mb-5">
-                <div class="col-md-6">
-                  <label class="form-label fw-bold">Nombre Completo</label>
-                  <input
-                    type="text"
-                    name="nombreRescatista"
-                    class="form-control"
-                    placeholder="Ej. Juan Pérez"
-                    required
-                  />
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label fw-bold">Teléfono de Contacto</label>
-                  <input
-                    type="tel"
-                    name="telefonoContacto"
-                    class="form-control"
-                    placeholder="Ej. 987654321"
-                    required
-                  />
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label fw-bold">Ocupación</label>
-                  <input
-                    type="text"
-                    name="ocupacion"
-                    class="form-control"
-                    placeholder="Ej. Estudiante"
-                    required
-                  />
-                </div>
-              </div>
-
-              <!-- SECCIÓN 2: DETALLES DE LA MASCOTA -->
-              <h4 class="section-title">2. Datos de la Mascota</h4>
-              <div class="row g-3 mb-4">
-                <div class="col-md-4">
-                  <label class="form-label fw-bold">Especie</label>
-                  <select name="especie" class="form-select" required>
-                    <option value="" selected disabled>Seleccionar...</option>
-                    <option value="Perro">Perro</option>
-                    <option value="Gato">Gato</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label fw-bold">Género</label>
-                  <select name="genero" class="form-select" required>
-                    <option value="" selected disabled>Seleccionar...</option>
-                    <option value="Macho">Macho</option>
-                    <option value="Hembra">Hembra</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label fw-bold">Raza</label>
-                  <input
-                    type="text"
-                    name="raza"
-                    class="form-control"
-                    placeholder="Ej. Mestizo"
-                    required
-                  />
-                </div>
-                <div class="col-md-12">
-                  <label class="form-label fw-bold"
-                    >Color / Características distintivas</label
-                  >
-                  <textarea
-                    name="colorCaracteristica"
-                    class="form-control"
-                    rows="2"
-                    placeholder="Mancha blanca en el ojo derecho, pelaje negro..."
-                  ></textarea>
-                </div>
-              </div>
-
-              <!-- SECCIÓN 3: EL RESCATE -->
-              <h4 class="section-title">3. Detalles del Encuentro</h4>
-              <div class="row g-3 mb-4">
-                <div class="col-md-8">
-                  <label class="form-label fw-bold"
-                    >Lugar de Rescate (Dirección/Referencia)</label
-                  >
-                  <input
-                    type="text"
-                    name="lugarRescate"
-                    class="form-control"
-                    placeholder="Ej. Av. Principal frente al parque"
-                    required
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label fw-bold">Fecha y Hora</label>
-                  <input
-                    type="datetime-local"
-                    name="fechaRescate"
-                    class="form-control"
-                    required
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label fw-bold">Estado de Salud</label>
-                  <input
-                    type="text"
-                    name="estadoSalud"
-                    class="form-control"
-                    placeholder="Ej. Estable, Crítico, Desnutrido"
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label fw-bold">Condiciones</label>
-                  <input
-                    type="text"
-                    name="condiciones"
-                    class="form-control"
-                    placeholder="Ej. Atado, Envenenado, Abandonado"
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label fw-bold">Estado Actual</label>
-                  <input
-                    type="text"
-                    name="estadoActual"
-                    class="form-control"
-                    placeholder="Ej. En veterinaria, Hogar temporal"
-                  />
-                </div>
-              </div>
-
-              <div class="text-center mt-5">
-                <button type="submit" class="btn-send px-5">
-                  <i class="fa-solid fa-paper-plane me-2"></i> Enviar Reporte de
-                  Rescate
-                </button>
-              </div>
-            </form>
+            <div class="col-md-6">
+              <label class="form-label">DNI (Documento Nacional de Identidad)</label>
+              <input
+                type="text"
+                name="DNI"
+                placeholder="Ej. 23454564"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="col-md-5">
+              <label class="form-label">Teléfono</label>
+              <input
+                type="text"
+                name="telefonoContacto"
+                placeholder="Ej. 932 943 943"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Ocupación</label>
+              <input
+                type="text"
+                name="ocupacion"
+                placeholder="Ej. Ciudadano, Voluntario"
+                class="form-control"
+                required
+              />
+            </div>
           </div>
-        </div>
+
+          <h5 class="section-header">2. Detalles de la Mascota</h5>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label">Especie</label>
+              <select name="especie" class="form-select" required>
+                <option value="Perro">Perro</option>
+                <option value="Gato">Gato</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Género</label>
+              <select name="genero" class="form-select" required>
+                <option value="Macho">Macho</option>
+                <option value="Hembra">Hembra</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Raza</label>
+              <input
+                type="text"
+                name="raza"
+                placeholder="Ej. Mestizo"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="col-12">
+              <label class="form-label">Color y Características</label>
+              <input
+                type="text"
+                name="colorCaracteristica"
+                placeholder="Color , Apariencia , tamaño"
+                class="form-control"
+              />
+            </div>
+          </div>
+
+          <h5 class="section-header">3. Situación del Encuentro</h5>
+          <div class="row g-3">
+            <div class="col-md-8">
+              <label class="form-label">Lugar del Rescate</label>
+              <input
+                type="text"
+                name="lugarRescate"
+                placeholder="Calle, Numero , Distrito"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Fecha Encontrado</label>
+              <input
+                type="date"
+                name="fechaEncontrado"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Estado de Salud</label>
+              <input
+                type="text"
+                name="estadoSalud"
+                placeholder="Sano , Mal estado"
+                class="form-control"
+              />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Condiciones</label>
+              <input
+                type="text"
+                name="condiciones"
+                placeholder="Desnutrido, moribundo"
+                class="form-control"
+              />
+            </div>
+          </div>
+
+          <div class="text-center mt-5">
+            <button type="submit" class="btn-rescue shadow-sm">
+              Guardar Registro
+            </button>
+          </div>
+        </form>
       </div>
     </main>
-
     <footer class="bg-white border-top py-5 mt-5">
       <div class="container text-center text-md-start">
         <div class="row g-4">
@@ -266,7 +253,5 @@
         </p>
       </div>
     </footer>
-
-    <script src="cdn.jsdelivr.net"></script>
   </body>
 </html>

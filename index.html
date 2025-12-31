@@ -8,11 +8,11 @@
       src="https://kit.fontawesome.com/814fc0ff07.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="./public/css/style.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./public/css/style.css" />
   </head>
   <body>
     <header class="bg-white shadow-sm sticky-top">
@@ -29,32 +29,35 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="nav_bar collapse navbar-collapse" id="navbarNav">
+          <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-center">
               <li class="nav-item">
                 <a
-                  class="nav-link mx-2 fw-semibold nav_home"
+                  class="nav-text nav-underlines mx-2 fw-semibold"
                   href="./index.html"
                   >Home</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link mx-2 fw-semibold nav_report"
+                  class="nav-text nav-underlines nav-link mx-2 fw-semibold"
                   href="./view/Rescues/formRescues.php"
                   >Reportar Caso</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link mx-2 fw-semibold nav_adopt"
-                  href="./view/Adopts/formAdopt.php"
+                  class="nav-text nav-underlines nav-link mx-2 fw-semibold"
+                  href="#"
                   >Adoptar</a
                 >
               </li>
-              <li class="nav-item ms-lg-3"><a class="nav-link mx-2 fw-semibold" href="#">RegistrosPets</a></li>
               <li class="nav-item ms-lg-3">
-                <a class="nav-link mx-2 fw-semibold" href="#">Iniciar Sesión</a>
+                <a
+                  class="nav-text nav-underlines nav-link mx-2 fw-semibold"
+                  href="./view/Rescues/listRescues.php"
+                  >RegistrosPets</a
+                >
               </li>
             </ul>
           </div>
@@ -157,8 +160,10 @@
             dejar atrás, es romper un vínculo. Tú puedes ser parte del cambio
             reportando o protegiendo a los que no tienen voz.
           </p>
-          <a href="#" class="btn btn-outline-dark btn-lg px-4 rounded-3"
-            >Saber más</a
+          <a
+            href="./view/Rescues/formRescues.php"
+            class="btn btn-outline-dark btn-lg px-4 rounded-3"
+            >Reportar Mascota</a
           >
         </div>
         <div class="col-lg-6">
