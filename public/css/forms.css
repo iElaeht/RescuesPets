@@ -1,5 +1,7 @@
 @import url('style.css'); /* Importa la base del index para no repetir código */
-
+main{
+  height: 90vh;
+}
 .form-container {
   background: white;
   border-radius: 30px;

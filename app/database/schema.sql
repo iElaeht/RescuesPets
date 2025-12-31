@@ -37,6 +37,6 @@ INSERT INTO Rescues (
 ('Juan Pérez', '987654321', 'Voluntario','23423234', 'Perro', 'Macho', 'Pitbull','Negro con manchas blancas', 'Parque Central','2025-08-14', 'Herido', 'Abandonado'),
 ('María López', '912345678', 'Ciudadano','44332244', 'Gato', 'Hembra', 'No identificado','Gris atigrado', 'Avenida Principal','2025-09-15', 'Sano', 'Perdido');
 
-SELECT * FROM Rescues;
-
+SELECT * FROM adoptions;
+SELECT * FROM rescues;
 update Rescues SET raza = 'Mestizo' where idRescate = 2;

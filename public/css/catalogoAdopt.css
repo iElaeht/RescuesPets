@@ -10,9 +10,14 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--rescue-bg);
 }
+main {
+  height: 90vh;
+}
 
 /* --- NAVEGACIÓN --- */
-.text-rescue { color: var(--rescue-red) !important; }
+.text-rescue {
+  color: var(--rescue-red) !important;
+}
 
 .nav-underlines {
   color: var(--rescue-dark) !important;

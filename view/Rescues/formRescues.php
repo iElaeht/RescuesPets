@@ -28,22 +28,6 @@
     </style>
 </head>
 <body class="bg-light">
-    <header class="bg-white shadow-sm sticky-top">
-        <nav class="navbar navbar-expand-lg py-3">
-            <div class="container">
-                <a class="navbar-brand fw-bold fs-3" href="../../index.html">
-                    Rescues<span class="text-rescue">Pets</span>
-                </a>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto align-items-center">
-                        <li class="nav-item"><a class="nav-text nav-underlines mx-2 fw-semibold" href="../../index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-text nav-underlines mx-2 fw-semibold" href="./listRescues.php">Ver Registros</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-
     <main class="container py-5">
         <div class="card card-custom p-4 p-md-5 mx-auto" style="max-width: 900px">
             <h2 class="fw-bold mb-4 text-center">

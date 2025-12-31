@@ -12,7 +12,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../../public/css/style.css" />
+    <link rel="stylesheet" href="../../public/css/ListStyle.css" />
     <style>
       .table-responsive {
         border-radius: 15px;
@@ -46,6 +46,14 @@
           <a class="navbar-brand fw-bold fs-3" href="../../index.html">
             Rescues<span class="text-rescue">Pets</span>
           </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-center">
               <li class="nav-item">
@@ -58,8 +66,15 @@
               <li class="nav-item">
                 <a
                   class="nav-text nav-underlines mx-2 fw-semibold"
-                  href="./formRescues.php"
-                  >Reportar</a
+                  href="../Adopts/catalogoAdopt.php"
+                  >Adoptar</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-text nav-underlines mx-2 fw-semibold"
+                  href="../Adopts/listAdopt.php"
+                  >Reports Adoptados</a
                 >
               </li>
             </ul>
@@ -127,7 +142,63 @@
         </table>
       </div>
     </main>
-
+    <footer class="bg-white border-top py-5 mt-5">
+      <div class="container text-center text-md-start">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <h3 class="fw-bold">
+              Rescues<span style="color: #e3091b">Pets</span>
+            </h3>
+            <p class="text-muted">
+              Uniendo corazones, salvando vidas desde 2025.
+            </p>
+          </div>
+          <div class="col-md-4 text-center">
+            <h5 class="fw-bold mb-3">Navegación</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a
+                  href="../../index.html"
+                  class="text-muted text-decoration-none"
+                  >Inicio</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../Adopts/catalogoAdopt.php"
+                  class="text-muted text-decoration-none"
+                  >Adoptar</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../Rescues/formRescues.php"
+                  class="text-muted text-decoration-none"
+                  >Reportar</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 text-md-end">
+            <h5 class="fw-bold mb-3">Contacto</h5>
+            <div
+              class="d-flex justify-content-center justify-content-md-end gap-3 mb-2"
+            >
+              <a href="#" class="text-dark"
+                ><i class="fa-brands fa-facebook fs-4"></i
+              ></a>
+              <a href="#" class="text-dark"
+                ><i class="fa-brands fa-instagram fs-4"></i
+              ></a>
+            </div>
+            <p class="small text-muted">Rescuespets@gmail.com</p>
+          </div>
+        </div>
+        <p class="text-center text-muted small mt-4">
+          &copy; 2025 RescuesPets - Todos los derechos reservados.
+        </p>
+      </div>
+    </footer>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const contenedorTabla = document.querySelector("#lista-rescates");

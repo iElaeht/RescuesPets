@@ -3,22 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RescuesPets | Catálogo de Adopción</title>
+    <title>Catálogo de Adopción | RescuesPets</title>
     <script
       src="https://kit.fontawesome.com/814fc0ff07.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="../../public/css/catalogoAdopt.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="../../public/css/style.css" />
+    <style>
+      .card-pet {
+        transition: transform 0.3s shadow 0.3s;
+        border-radius: 20px;
+        overflow: hidden;
+        border: none;
+      }
+      .card-pet:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+      .pet-image {
+        height: 250px;
+        object-fit: cover;
+        background-color: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
   </head>
   <body>
     <header class="bg-white shadow-sm sticky-top">
       <nav class="navbar navbar-expand-lg py-3">
         <div class="container">
-          <a class="navbar-brand fw-bold fs-3" href="./index.html">
+          <a class="navbar-brand fw-bold fs-3" href="../../index.html">
             Rescues<span class="text-rescue">Pets</span>
           </a>
           <button
@@ -34,29 +54,22 @@
               <li class="nav-item">
                 <a
                   class="nav-text nav-underlines mx-2 fw-semibold"
-                  href="./index.html"
+                  href="../../index.html"
                   >Home</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-text nav-underlines nav-link mx-2 fw-semibold"
-                  href="./view/Rescues/formRescues.php"
-                  >Reportar Caso</a
+                  class="nav-text nav-underlines mx-2 fw-semibold"
+                  href="../Adopts/catalogoAdopt.php"
+                  >Adoptar</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-text nav-underlines nav-link mx-2 fw-semibold"
-                  href="./view/Adopts/catalogoAdopt.php"
-                  >Adoptar</a
-                >
-              </li>
-              <li class="nav-item ms-lg-3">
-                <a
-                  class="nav-text nav-underlines nav-link mx-2 fw-semibold"
-                  href="./view/Rescues/listRescues.php"
-                  >RegistrosPets</a
+                  class="nav-text nav-underlines mx-2 fw-semibold"
+                  href="../Rescues/formRescues.php"
+                  >Reportar</a
                 >
               </li>
             </ul>
@@ -68,84 +81,16 @@
     <main class="container py-5">
       <div class="text-center mb-5">
         <h1 class="fw-bold">
-          Nuestros <span class="text-rescue">Rescatados</span>
+          Nuestros Amigos <span class="text-rescue">Buscando Hogar</span>
         </h1>
         <p class="text-muted">
-          Ellos están esperando por una familia responsable como la tuya.
+          Todos ellos han sido rescatados y esperan por una familia como la
+          tuya.
         </p>
       </div>
 
-      <div class="row g-4" id="contenedor-catalogo">
-        <div class="col-12 text-center py-5">
-          <div class="spinner-border text-danger" role="status"></div>
-          <p class="mt-2 text-muted">Buscando amiguitos...</p>
-        </div>
-      </div>
+      <div class="row g-4" id="contenedor-catalogo"></div>
     </main>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const contenedor = document.getElementById("contenedor-catalogo");
-
-        function cargarCatalogo() {
-          const fd = new FormData();
-          fd.append("operation", "listar");
-
-          // Llamamos a tu controlador
-          fetch("../../app/controllers/RescueController.php", {
-            method: "POST",
-            body: fd,
-          })
-            .then((res) => res.json())
-            .then((datos) => {
-              contenedor.innerHTML = ""; // Limpiamos el spinner
-
-              if (datos.length === 0) {
-                contenedor.innerHTML = `<h3>No hay mascotas disponibles en este momento.</h3>`;
-                return;
-              }
-
-              datos.forEach((mascota) => {
-                // Creamos la card dinámicamente con los datos de tu BD
-                const card = `
-              <div class="col-md-4 col-lg-3">
-                <div class="card h-100 border-0 shadow-sm custom-card">
-                  <img src="./public/images/" class="card-img-top p-3 rounded-5" alt="Mascota">
-                  <div class="card-body text-center pt-0">
-                    <div class="badge bg-danger-subtle text-danger mb-2 px-3">${
-                      mascota.especie
-                    }</div>
-                    <h5 class="fw-bold mb-1">${mascota.raza}</h5>
-                    <p class="text-muted small mb-3">
-                      <i class="fa-solid fa-location-dot me-1"></i> ${
-                        mascota.lugarRescate
-                      } <br>
-                      <i class="fa-solid fa-notes-medical me-1"></i> ${
-                        mascota.condiciones || "Saludable"
-                      } <br>
-                      <i class="fa-solid fa-circle-info"></i> ${mascota.colorCaracteristica}
-                    </p>
-                    <a href="../Adopts/formAdopt.php?id=${
-                      mascota.idRescate
-                    }" class="btn-rescue w-100 text-decoration-none d-block">
-                      Adoptar
-                    </a>
-                  </div>
-                </div>
-              </div>
-            `;
-                contenedor.innerHTML += card;
-              });
-            })
-            .catch((err) => {
-              console.error("Error al cargar:", err);
-              contenedor.innerHTML = `<p class="text-center text-danger">Error de conexión con el servidor.</p>`;
-            });
-        }
-
-        cargarCatalogo();
-      });
-    </script>
     <footer class="bg-white border-top py-5 mt-5">
       <div class="container text-center text-md-start">
         <div class="row g-4">
@@ -161,17 +106,23 @@
             <h5 class="fw-bold mb-3">Navegación</h5>
             <ul class="list-unstyled">
               <li>
-                <a
-                  href="../../index.html"
-                  class="text-muted text-decoration-none"
+                <a href="../../index.html" class="text-muted text-decoration-none"
                   >Inicio</a
                 >
               </li>
               <li>
-                <a href="#" class="text-muted text-decoration-none">Adoptar</a>
+                <a
+                  href="../Adopts/catalogoAdopt.php"
+                  class="text-muted text-decoration-none"
+                  >Adoptar</a
+                >
               </li>
               <li>
-                <a href="#" class="text-muted text-decoration-none">Reportar</a>
+                <a
+                  href="../Rescues/formRescues.php"
+                  class="text-muted text-decoration-none"
+                  >Reportar</a
+                >
               </li>
             </ul>
           </div>
@@ -195,5 +146,62 @@
         </p>
       </div>
     </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const contenedor = document.getElementById("contenedor-catalogo");
+
+        function cargarMascotasDisponibles() {
+          const p = new URLSearchParams();
+          p.append("operation", "listar"); // Usamos el listar de RescueController
+
+          fetch("../../app/controllers/RescueController.php", {
+            method: "POST",
+            body: p,
+          })
+            .then((res) => res.json())
+            .then((datos) => {
+              renderizarCatalogo(datos);
+            })
+            .catch((e) => console.error("Error al cargar catálogo:", e));
+        }
+
+        function renderizarCatalogo(lista) {
+          contenedor.innerHTML = "";
+
+          // IMPORTANTE: El controlador debe devolver solo los de estado '1'
+          if (lista.length === 0) {
+            contenedor.innerHTML = `<div class="col-12 text-center text-muted"><h3>No hay mascotas disponibles por ahora.</h3></div>`;
+            return;
+          }
+
+          lista.forEach((pet) => {
+            contenedor.innerHTML += `
+                        <div class="col-md-4 col-lg-3">
+                            <div class="card card-pet shadow-sm h-100">
+                                <div class="pet-image">
+                                    <i class="fa-solid fa-paw fa-4x text-light"></i>
+                                    </div>
+                                <div class="card-body">
+                                    <h5 class="fw-bold mb-1">${pet.raza}</h5>
+                                    <p class="text-muted small mb-2">${pet.especie} • ${pet.genero}</p>
+                                    <div class="mb-3">
+                                        <span class="badge bg-danger-subtle text-danger rounded-pill">${pet.condiciones}</span>
+                                    </div>
+                                    <div class="d-grid">
+                                        <a href="./formAdopt.php?id=${pet.idRescate}" class="btn btn-rescue">
+                                            Adoptar a #${pet.idRescate}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+          });
+        }
+
+        cargarMascotasDisponibles();
+      });
+    </script>
   </body>
 </html>
