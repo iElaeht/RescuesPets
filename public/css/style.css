@@ -10,17 +10,14 @@ html {
   /* Esto evita que el header sticky tape el título de la sección */
   scroll-padding-top: 80px;
 }
-
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--rescue-bg);
 }
-
 /* --- NAVEGACIÓN --- */
 .text-rescue {
   color: var(--rescue-red) !important;
 }
-
 .nav-underlines {
   color: var(--rescue-dark) !important;
   text-decoration: underline var(--rescue-dark) !important;
@@ -28,13 +25,11 @@ body {
   text-decoration-thickness: 2px;
   transition: all 0.3s ease;
 }
-
 .nav-underlines:hover {
   color: var(--rescue-red) !important;
   text-decoration-color: var(--rescue-red) !important;
   text-underline-offset: 5px;
 }
-
 /* --- COMPONENTES DEL INDEX --- */
 .card-custom {
   border: none;
@@ -43,22 +38,18 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   background: white;
 }
-
 .card-custom:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
-
 .img-hero {
   border-radius: 30px;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   transition: transform 0.5s ease;
 }
-
 .img-hero:hover {
   transform: scale(1.02);
 }
-
 .btn-rescue {
   background-color: var(--rescue-red);
   color: white !important;
@@ -68,7 +59,6 @@ body {
   display: inline-block;
   transition: all 0.3s ease;
 }
-
 .btn-rescue:hover {
   background-color: var(--rescue-red-hover);
   transform: translateY(-2px);

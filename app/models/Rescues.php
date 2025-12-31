@@ -28,9 +28,18 @@ class Rescues extends ConnectionDB {
                         especie, genero, raza, colorCaracteristica, 
                         lugarRescate, fechaEncontrado, estadoSalud, condiciones
                     ) VALUES (
-                        :nombreRescatista, :DNI, :telefonoContacto, :ocupacion, 
-                        :especie, :genero, :raza, :colorCaracteristica, 
-                        :lugarRescate, :fechaEncontrado, :estadoSalud, :condiciones
+                        :nombreRescatista, 
+                        :DNI, 
+                        :telefonoContacto, 
+                        :ocupacion, 
+                        :especie, 
+                        :genero, 
+                        :raza, 
+                        :colorCaracteristica, 
+                        :lugarRescate, 
+                        :fechaEncontrado, 
+                        :estadoSalud, 
+                        :condiciones
                     )";
             $consulta = $this->pdo->prepare($sql);
             return $consulta->execute($datos);

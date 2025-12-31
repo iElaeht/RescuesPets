@@ -6,19 +6,15 @@ $rescue = new Rescues();
 header("Content-Type: application/json; charset=utf-8");
 
 if (isset($_POST['operation'])) {
-
     switch ($_POST['operation']) {
-        
         case 'listar':
             // Retorna todos los registros con estado '1'
             echo json_encode($rescue->listar());
             break;
-
         case 'buscarId':
             // Busca una mascota específica por su ID
             echo json_encode($rescue->buscarid($_POST['idRescate']));
             break;
-
         case 'registrar':
             $datos = [
                 'nombreRescatista'    => $_POST['nombreRescatista'],
@@ -34,10 +30,8 @@ if (isset($_POST['operation'])) {
                 'estadoSalud'         => $_POST['estadoSalud'],
                 'condiciones'         => $_POST['condiciones']
             ];
-
             // Ejecutamos el registro
             $resultado = $rescue->registrar($datos);
-
             // Armamos una respuesta que el JS pueda entender
             if ($resultado) {
                 echo json_encode([
@@ -51,7 +45,6 @@ if (isset($_POST['operation'])) {
                 ]);
             }
             break;
-
 case 'actualizar':
             $datos = [
                 'idRescate'           => $_POST['idRescate'],
@@ -68,7 +61,6 @@ case 'actualizar':
                 'estadoSalud'         => $_POST['estadoSalud'],
                 'condiciones'         => $_POST['condiciones']
             ];
-
             // IMPORTANTE: Envolver el resultado en un array con status y message
             $resultado = $rescue->actualizar($datos);
             echo json_encode([
@@ -76,7 +68,6 @@ case 'actualizar':
                 "message" => $resultado ? "Registro actualizado con éxito" : "Error al actualizar en la base de datos"
             ]);
             break;
-
         case 'eliminar':
             $resultado = $rescue->eliminar($_POST['idRescate']);
             echo json_encode([

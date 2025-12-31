@@ -26,7 +26,13 @@ public function registrar($datos = []) {
         // 2. Insertar la Adopción
         $sqlInsert = 
         "INSERT INTO Adoptions (idRescate, nombreAdoptante, dniAdoptante, telefonoAdoptante, direccionAdoptante) 
-        VALUES (:idRescate, :nombreAdoptante, :dniAdoptante, :telefonoAdoptante, :direccionAdoptante)";
+        VALUES (
+        :idRescate, 
+        :nombreAdoptante, 
+        :dniAdoptante, 
+        :telefonoAdoptante, 
+        :direccionAdoptante
+        )";
         $stmtInsert = $this->pdo->prepare($sqlInsert);
         $resInsert = $stmtInsert->execute($datos);
 

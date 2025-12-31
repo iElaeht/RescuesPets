@@ -1,10 +1,10 @@
 <?php
 class ConnectionDB{
     private $server = "localhost";
-    private $port = "3306";
-    private $database = "rescuespets";
-    private $username = "root";
-    private $passwordDB = "root";
+    private $port = "3306"; //Aqui va el Port de DB (Por defecto casi siempre es 3306)
+    private $database = "rescuespets";  //Aqui va el Nombre de DB
+    private $username = "root";  //Aqui va el usuario Asignado en tu BD
+    private $passwordDB = "root"; //Aqui va la contraseña Asignado en tu BD en mi caso use (root)
     public function getConnection(){
       try{
         $pdo = new PDO(

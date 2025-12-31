@@ -57,7 +57,6 @@ if (isset($_POST['operation'])) {
             ];
 
             $resultado = $adoption->actualizar($datos);
-
             echo json_encode([
                 "status" => $resultado,
                 "message" => $resultado ? "Datos del adoptante actualizados correctamente" : "No se pudo actualizar el registro"
